@@ -7,15 +7,19 @@
         <script src="./progress-bar.js"></script>
     </head>
     <body>
-        <div class="progress-bar">
-            <progress value="75" min="0" max="100" style="visibility: hidden; height: 0; width: 0;"></progress>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 50px;">
+            <div class="progress-bar">
+                <progress value="75" min="0" max="100" style="visibility: hidden; height: 0; width: 0;"></progress>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                <div class="button-group">
+                    <button onclick="decrementValue()">-</button>
+                    <button onclick="incrementValue()">+</button>
+                </div>
+                <input type="number" oninput="changeValue(value)">
+                <button onclick="animationDisplay()">Animation</button>
+                <button onclick="progressHide()">Hidden</button>
+            </div>
         </div>
-        <div class="button-group">
-            <button onclick="decrementValue()">-</button>
-            <button onclick="incrementValue()">+</button>
-        </div>
-        <input type="number" oninput="changeValue(value)">
-        <button onclick="animationDisplay()">Animation</button>
-        <button onclick="progressHide()">Hidden</button>
     </body>
 </html>

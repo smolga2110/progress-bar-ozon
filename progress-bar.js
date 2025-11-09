@@ -63,6 +63,12 @@ function decrementValue(){
 }
 
 function changeValue(value){
+    if (value < 0 || !value){
+        value = 0
+    }
+    if (value > 100){
+        value = 100 
+    }
     prog.state.value = value
     displayBar()
 }
