@@ -1,0 +1,25 @@
+.progress-bar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.progress-bar.animate{
+    background: radial-gradient(closest-side, white 79%, transparent 80% 100%),
+      conic-gradient(hotpink calc(var(--progress-value) * 1%), pink 0) !important;
+    animation: progress 2s 1 forwards;
+}
+
+.button-group{
+    display: flex;
+}
+
+@property --progress-value {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+}
+
+@keyframes progress {
+    to { --progress-value: 75; }
+}
