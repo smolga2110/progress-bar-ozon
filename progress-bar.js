@@ -67,4 +67,16 @@ function changeValue(value){
     displayBar()
 }
 
+function progressHide(){
+    const bar = document.querySelector('.progress-bar')
+    if (!prog.state.isHidden){
+        bar.style.visibility = "hidden"
+        prog.state.isHidden = true
+    }
+    else{
+        bar.style.visibility = ""
+        prog.state.isHidden = false
+    }
+}
+
 window.onload = displayBar;
