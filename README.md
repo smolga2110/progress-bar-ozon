@@ -6,6 +6,7 @@
 * Normal State - отображение прогресса от 0% до 100%
 * Animated State - циклическая анимация вращения
 * Hidden State - скрытие компонента
+* ### Присутствует Portrait / Landscape адаптивность
 
 ## Создание экземпляра
 
@@ -62,3 +63,4 @@ progressBar.progressHide(); // переключить видимость
 progressBar.increment(); // +1%
 progressBar.decrement(); // -1%
 ```
+
