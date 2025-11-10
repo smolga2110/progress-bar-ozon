@@ -31,7 +31,7 @@ function displayBar(){
     elem.value = prog.state.value
     bar.style.background = `
       radial-gradient(closest-side, white 79%, transparent 80% 100%),
-      conic-gradient(hotpink ${prog.state.value}%, pink 0)
+      conic-gradient(#005cff ${prog.state.value}%, #eaf0f6 0)
     `;
 
 }
