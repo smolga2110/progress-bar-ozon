@@ -41,9 +41,7 @@ body{
 }
 
 .progress-bar.animate{
-    background: radial-gradient(closest-side, white 79%, transparent 80% 100%),
-      conic-gradient(#005cff calc(var(--progress-value) * 1%), #eaf0f6 0) !important;
-    animation: progress 2s 1 forwards;
+    animation: progress 4s infinite linear;
 }
 
 .value-input{
@@ -60,8 +58,33 @@ body{
     inherits: false;
 }
 
+@property --progress-value_white {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+}
+
 @keyframes progress {
-    to { --progress-value: 75; }
+    0%, 25% { 
+        --progress-value: 0; 
+        background: radial-gradient(closest-side, white 79%, transparent 80% 100%),
+      conic-gradient(#005cff calc(var(--progress-value) * 1%), #eaf0f6 0) !important;
+    }
+    25%, 50% { 
+        --progress-value: 100;
+        background: radial-gradient(closest-side, white 79%, transparent 80% 100%),
+      conic-gradient(#005cff calc(var(--progress-value) * 1%), #eaf0f6 0) !important;
+    }
+    50%, 75% { 
+        --progress-value_white: 0; 
+        background: radial-gradient(closest-side, white 79%, transparent 80% 100%),
+      conic-gradient(#eaf0f6 calc(var(--progress-value_white) * 1%), #005cff 0) !important;
+    }
+    75%, 100% { 
+        --progress-value_white: 100;
+        background: radial-gradient(closest-side, white 79%, transparent 80% 100%),
+      conic-gradient(#eaf0f6 calc(var(--progress-value_white) * 1%), #005cff 0) !important;
+    }
 }
 
 /* Toggle switch раздел */
