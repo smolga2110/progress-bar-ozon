@@ -65,9 +65,11 @@ function decrementValue(){
 function changeValue(value){
     if (value < 0 || !value){
         value = 0
+        document.querySelector(".value-input").value = null
     }
     if (value > 100){
         value = 100 
+        document.querySelector(".value-input").value = 100
     }
     prog.state.value = value
     displayBar()
