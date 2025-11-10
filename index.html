@@ -9,28 +9,31 @@
     </head>
     <body>
         <div class="container">
-            <div class="progress-bar">
-                <progress value="75" min="0" max="100" style="visibility: hidden; height: 0; width: 0;"></progress>
-            </div>
+            <div id="progress-container"></div>
+            <script>
+                const progressBar = new ProgressBar(
+                    document.getElementById("progress-container")
+                );
+            </script>
             <div class="api-controls">
                 <!-- <div class="button-group">
                     <button onclick="decrementValue()">-</button>
                     <button onclick="incrementValue()">+</button>
                 </div> -->
                 <div class="group">
-                    <input type="number" oninput="changeValue(value)" class="value-input">
+                    <input type="number" oninput="progressBar.changeValue(value)" class="value-input">
                     <span class="group-label">Value</span>
                 </div>
                 <div class="group">
                     <label class="switch">
-                        <input type="checkbox" onchange="animationDisplay()">
+                        <input type="checkbox" onchange="progressBar.animationDisplay()">
                         <span class="slider"></span>
                     </label>
                     <span class="group-label">Animate</span>
                 </div>
                 <div class="group">
                     <label class="switch">
-                        <input type="checkbox" onchange="progressHide()">
+                        <input type="checkbox" onchange="progressBar.progressHide()">
                         <span class="slider"></span>
                     </label>
                     <span class="group-label">Hide</span>

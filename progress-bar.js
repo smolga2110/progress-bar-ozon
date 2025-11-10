@@ -1,6 +1,7 @@
 class ProgressBar {
 
-    constructor(options = {}){
+    constructor(container, options = {}){
+        this.container = container
         this.state = {
             value: options.value || 0,
             min: options.min || 0,
@@ -8,83 +9,79 @@ class ProgressBar {
             isAnimated: false,
             isHidden: false
         }
+
+        this.init()
+    }
+
+    init(){
+        this.container.innerHTML = `
+            <div class="progress-bar">
+                <progress value="${this.state.value}" min="${this.state.min}" max="${this.state.max}" style="visibility: hidden; height: 0; width: 0;"></progress>
+            </div>
+        `;
+        this.bar = this.container.querySelector('.progress-bar')
+        this.elem = this.container.querySelector("progress")
+
+        this.render()
     }
 
     decrement(){
         this.state.value--
+        this.render()
     }
 
     increment(){
         this.state.value++
+        this.render()
+    }
+
+    render(){
+
+        this.bar.style.background = ''
+
+        this.elem.value = this.state.value
+        this.bar.style.background = `
+        radial-gradient(closest-side, white 79%, transparent 80% 100%),
+        conic-gradient(#005cff ${this.state.value}%, #eaf0f6 0)
+        `;
+    }
+
+    animationDisplay(){
+        if (!this.state.isAnimated){
+            this.bar.classList.remove('animate');
+            this.bar.style.background = ''
+
+            this.bar.classList.add('animate');
+            this.state.isAnimated = true;
+        }
+        else{
+            this.bar.classList.remove('animate');
+            this.render()
+            this.state.isAnimated = false;
+        }
+    }
+
+    changeValue(value){
+        if (value < 0 || !value){
+            value = 0
+            document.querySelector(".value-input").value = null
+        }
+        if (value > 100){
+            value = 100 
+            document.querySelector(".value-input").value = 100
+        }
+        this.state.value = value
+        this.render()
+    }
+
+    progressHide(){
+        if (!this.state.isHidden){
+            this.bar.style.visibility = "hidden"
+            this.state.isHidden = true
+        }
+        else{
+            this.bar.style.visibility = ""
+            this.state.isHidden = false
+        }
     }
 }
-
-let prog = new ProgressBar();
-
-function displayBar(){
-
-    const bar = document.querySelector('.progress-bar')
-    const elem = document.querySelector("progress")
-
-    bar.style.background = ''
-
-    elem.value = prog.state.value
-    bar.style.background = `
-      radial-gradient(closest-side, white 79%, transparent 80% 100%),
-      conic-gradient(#005cff ${prog.state.value}%, #eaf0f6 0)
-    `;
-
-}
-
-function animationDisplay(){
-    const bar = document.querySelector('.progress-bar')
-    if (!prog.state.isAnimated){
-        bar.classList.remove('animate');
-        bar.style.background = ''
-
-        bar.classList.add('animate');
-        prog.state.isAnimated = true;
-    }
-    else{
-        bar.classList.remove('animate');
-        displayBar()
-        prog.state.isAnimated = false;
-    }
-}
-
-function incrementValue(){
-    prog.increment()
-    displayBar()
-}
-
-function decrementValue(){
-    prog.decrement()
-    displayBar()
-}
-
-function changeValue(value){
-    if (value < 0 || !value){
-        value = 0
-        document.querySelector(".value-input").value = null
-    }
-    if (value > 100){
-        value = 100 
-        document.querySelector(".value-input").value = 100
-    }
-    prog.state.value = value
-    displayBar()
-}
-
-function progressHide(){
-    const bar = document.querySelector('.progress-bar')
-    if (!prog.state.isHidden){
-        bar.style.visibility = "hidden"
-        prog.state.isHidden = true
-    }
-    else{
-        bar.style.visibility = ""
-        prog.state.isHidden = false
-    }
-}
-
-window.onload = displayBar;
