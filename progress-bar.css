@@ -12,7 +12,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 50px;
+    gap: 90px;
     width: 320px;
     height: 568px;
 }
@@ -34,6 +34,12 @@ body{
     padding-left: 25px;
 }
 
+.group-label{
+    font-size: medium;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
 .progress-bar{
     width: 150px;
     height: 150px;
@@ -50,6 +56,19 @@ body{
     height: 34px;
     border: 1px solid black;
     border-radius: 34px;
+    text-align: center;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 @property --progress-value {
@@ -144,6 +163,6 @@ input:checked + .slider:before {
         flex-direction: row;
         width: 568px;
         height: 320px;
-        gap: 30px;
+        gap: 70px;
     }
 }
