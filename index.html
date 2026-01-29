@@ -3,9 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale = 1.0">
-        <title></title>
-        <link rel="stylesheet" href="progress-bar.css" />
-        <script src="./progress-bar.js"></script>
+        <title>SVG Progress Bar</title>
+        <link rel="stylesheet" href="css/progress-bar.css" />
+        <script src="js/progress-bar.js"></script>
     </head>
     <body>
         <div class="container">
@@ -16,28 +16,24 @@
                 );
             </script>
             <div class="api-controls">
-                <!-- <div class="button-group">
-                    <button onclick="decrementValue()">-</button>
-                    <button onclick="incrementValue()">+</button>
-                </div> -->
-                <div class="group">
-                    <input type="number" oninput="progressBar.changeValue(value)" class="value-input">
-                    <span class="group-label">Value</span>
-                </div>
-                <div class="group">
-                    <label class="switch">
-                        <input type="checkbox" onchange="progressBar.animationDisplay()">
-                        <span class="slider"></span>
-                    </label>
-                    <span class="group-label">Animate</span>
-                </div>
-                <div class="group">
-                    <label class="switch">
-                        <input type="checkbox" onchange="progressBar.progressHide()">
-                        <span class="slider"></span>
-                    </label>
-                    <span class="group-label">Hide</span>
-                </div>
+                    <div class="group">
+                        <input type="number" oninput="progressBar.changeValue(this.value)" class="value-input" placeholder="0">
+                        <span class="group-label">Value</span>
+                    </div>
+                    <div class="group">
+                        <label class="switch">
+                            <input type="checkbox" onchange="progressBar.animate()">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="group-label">Animate</span>
+                    </div>
+                    <div class="group">
+                        <label class="switch">
+                            <input type="checkbox" onchange="progressBar.hide()">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="group-label">Hide</span>
+                    </div>
             </div>
         </div>
     </body>
