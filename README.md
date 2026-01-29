@@ -35,8 +35,8 @@ const progressBar = new ProgressBar(container, options);
 * container - HTML элемент для размещения
 * options - объект настроек:
   * value - начальное значение (0-100)
-  *  min - минимальное значение (по умолчанию 0)
-  *  max - максимальное значение (по умолчанию 100)
+  *  isAnimated - true/false
+  *  isHidden - true/false
 
 ## Методы управления
 ### Установка значения
@@ -48,18 +48,11 @@ progressBar.changeValue(75); // установить значение 75%
 ### Переключение анимации
 
 ``` Js
-progressBar.animationDisplay(); // переключить анимацию
+progressBar.animate(); // переключить анимацию
 ```
 
 ### Скрытие компонента
 
 ``` Js
-progressBar.progressHide(); // переключить видимость
-```
-
-### Увеличение/уменьшение значения
-
-``` Js
-progressBar.increment(); // +1%
-progressBar.decrement(); // -1%
+progressBar.hide(); // переключить видимость
 ```
